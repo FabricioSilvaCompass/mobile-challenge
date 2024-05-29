@@ -1,14 +1,15 @@
 import React from 'react';
-type Props = {
-  name: string;
-};
+import {TextInputProps} from 'react-native';
 import {Container, Lable, InputBox} from './styles';
 
-export default function Input(props: Props) {
+interface Props extends TextInputProps {
+  lable: string;
+}
+export default function Input({lable, ...rest}: Props) {
   return (
     <Container>
-      <Lable>{props.name}</Lable>
-      <InputBox placeholder={props.name}></InputBox>
+      <Lable>{lable}</Lable>
+      <InputBox {...rest} />
     </Container>
   );
 }
