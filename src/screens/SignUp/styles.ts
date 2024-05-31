@@ -2,44 +2,55 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   justify-content: space-between;
-  background-color: #8e48ec;
+  background-color: white;
   flex-grow: 1;
 `;
 
 export const Header = styled.View`
-  justify-content: center;
-  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+  flex: 4;
 `;
 
 export const Title = styled.Text`
   text-align: center;
-  font-size: 30px;
-  color: white;
+  font-size: 24px;
+  color: black;
   font-weight: bold;
 `;
 
+export const Logo = styled.Image`
+  margin: 15px;
+`;
+
+export const CentralImage = styled.Image`
+  width: 137px;
+  height: 109px;
+  margin: 10px;
+`;
+
 export const ContentBody = styled.View`
-  flex: 3;
+  flex: 6;
   padding: 10px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   background-color: white;
   width: auto;
   align-items: stretch;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const ButtonSignUp = styled.TouchableOpacity`
-  background-color: black;
-  border-radius: 8px;
-  height: 56px;
+  background-color: #ffce00;
+  border-radius: 4px;
+  height: 40px;
   align-items: 'center';
   justify-content: center;
   margin: 10px;
 `;
 
 export const TextSignUpButton = styled.Text`
-  color: white;
+  color: black;
   font-size: 16px;
   text-align: center;
 `;
@@ -59,8 +70,3 @@ export const Description = styled.Text`
   color: black;
 `;
 export const Form = styled.View``;
-
-export const NameField = styled.View`
-  justify-content: center;
-  flex-direction: row;
-`;

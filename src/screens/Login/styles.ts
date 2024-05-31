@@ -2,53 +2,64 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   justify-content: space-between;
-  background-color: #8e48ec;
+  background-color: white;
   flex: 1;
 `;
 export const Header = styled.View`
-  justify-content: center;
-  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+  flex: 5;
+`;
+
+export const Logo = styled.Image`
+  margin: 15px;
+`;
+
+export const CentralImage = styled.Image`
+  width: 247px;
+  height: 201px;
+  margin: 10px;
 `;
 export const Title = styled.Text`
   text-align: center;
-  font-size: 30px;
-  color: white;
+  font-size: 24px;
+  color: black;
   font-weight: bold;
 `;
 
 export const ContentBody = styled.View`
-  flex: 2;
+  flex: 6;
   padding: 10px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   background-color: white;
   width: auto;
-  align-items: stretch;
+  justify-content: space-around;
 `;
 
 export const Form = styled.View``;
 
 export const ButtonLogin = styled.TouchableOpacity`
-  background-color: black;
-  border-radius: 8px;
-  height: 56px;
+  background-color: #ffce00;
+  border-radius: 1px;
+  height: 40px;
   align-items: 'center';
   justify-content: center;
   margin: 10px;
 `;
 
 export const TextLogin = styled.Text`
-  color: white;
+  color: black;
   font-size: 16px;
   text-align: center;
 `;
 
 export const ButtonCreateAccount = styled.TouchableOpacity`
   background-color: white;
-  border-radius: 8px;
+  border-radius: 4px;
   border-color: gray;
   border-width: 1px;
-  height: 56px;
+  height: 40px;
   align-items: center;
   justify-content: center;
   margin: 10px;

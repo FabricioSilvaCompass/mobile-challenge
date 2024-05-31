@@ -2,12 +2,13 @@ import React from 'react';
 import {
   BodyTitle,
   ButtonSignUp,
+  CentralImage,
   Container,
   ContentBody,
   Description,
   Form,
   Header,
-  NameField,
+  Logo,
   TextSignUpButton,
   Title,
 } from './styles';
@@ -32,40 +33,39 @@ const SignUp: React.FC = () => {
   return (
     <Container>
       <Header>
-        <Title>MY STATEMENT</Title>
+        <Logo source={require('../../assets/Logo-Compass.png')}></Logo>
+        <Title>My statement</Title>
+        <CentralImage
+          source={require('../../assets/undraw_welcome.png')}></CentralImage>
+        <Description>Track your statement and account balance</Description>
       </Header>
-      <ContentBody>
-        <BodyTitle>Create Account</BodyTitle>
-        <Description>
-          Please fill in the fields below to create an account.
-        </Description>
+      <ContentBody
+        style={{
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 5,
+            height: 10,
+          },
+          shadowOpacity: 0.51,
+          shadowRadius: 13.16,
+          elevation: 20,
+        }}>
+        <BodyTitle>Create your Account</BodyTitle>
+
         <Form>
-          <NameField>
-            <Controller
-              control={control}
-              name="Lastname"
-              render={({field: {onChange, value}}) => (
-                <Input
-                  lable="Last name"
-                  placeholder="Last name"
-                  onChangeText={onChange}
-                  value={value}
-                />
-              )}
-            />
-            <Controller
-              control={control}
-              name="Firstname"
-              render={({field: {onChange, value}}) => (
-                <Input
-                  lable="First name"
-                  placeholder="First name"
-                  onChangeText={onChange}
-                  value={value}
-                />
-              )}
-            />
-          </NameField>
+          <Controller
+            control={control}
+            name="FullName"
+            render={({field: {onChange, value}}) => (
+              <Input
+                lable="Full name"
+                placeholder="Full name"
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+          />
+
           <Controller
             control={control}
             name="E-mail"

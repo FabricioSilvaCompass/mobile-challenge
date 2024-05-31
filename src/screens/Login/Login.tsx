@@ -4,11 +4,13 @@ import {
   BodyTitle,
   ButtonCreateAccount,
   ButtonLogin,
+  CentralImage,
   Container,
   ContentBody,
   Description,
   Form,
   Header,
+  Logo,
   Or,
   TextCreateAccount,
   TextLogin,
@@ -38,10 +40,25 @@ const Login: React.FC = () => {
   return (
     <Container>
       <Header>
-        <Title>MY STATEMENT</Title>
+        <Logo source={require('../../assets/Logo-Compass.png')}></Logo>
+        <Title>My statement</Title>
+
+        <CentralImage
+          source={require('../../assets/undraw_welcome.png')}></CentralImage>
+        <Description>Track your statement and account balance</Description>
       </Header>
-      <ContentBody>
-        <BodyTitle>Log in</BodyTitle>
+      <ContentBody
+        style={{
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 0,
+            height: 10,
+          },
+          shadowOpacity: 0.51,
+          shadowRadius: 13.16,
+          elevation: 20,
+        }}>
+        <BodyTitle>Access your account</BodyTitle>
         <Description>
           Welcome to My Statement, please fill in the fields below to log into
           your account.

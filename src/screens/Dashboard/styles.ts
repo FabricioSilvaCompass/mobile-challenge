@@ -13,3 +13,15 @@ export const BodyTitle = styled.Text`
   text-align: center;
   color: black;
 `;
+
+export const CentralImage = styled.Image`
+  width: 247px;
+  height: 201px;
+  margin: 10px;
+`;
+export const Description = styled.Text`
+  font-size: 16px;
+  text-align: center;
+  margin: 10px;
+  color: black;
+`;
