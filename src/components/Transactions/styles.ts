@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 type ValueTransaction = {
-  negative: boolean;
+  positive: boolean;
 };
 
 export const Container = styled.TouchableOpacity`
@@ -22,8 +22,9 @@ export const TypeTransaction = styled.Text`
   font-size: 14px;
 `;
 export const ValueTransaction = styled.Text<ValueTransaction>`
-  color: ${props => (props.negative ? 'red' : 'green')};
+  color: ${props => (props.positive ? '#0EB400' : '#FF0024')};
   font-size: 14px;
+  font-weight: bold;
 `;
 export const DateTransaction = styled.Text`
   font-size: 14px;

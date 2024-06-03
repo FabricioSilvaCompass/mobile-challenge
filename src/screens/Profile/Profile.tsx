@@ -19,10 +19,10 @@ export default function Profile() {
     <Container>
       <ContentBody style={{elevation: 5}}>
         <Title>User details</Title>
-        <Input lable="User ID"></Input>
-        <Input lable="Password"></Input>
-        <Input lable="Full Name"></Input>
-        <Input lable="Birthday"></Input>
+        <Input isPassword={false} lable="User ID"></Input>
+        <Input isPassword={true} lable="Password"></Input>
+        <Input isPassword={false} lable="Full Name"></Input>
+        <Input isPassword={false} lable="Birthday"></Input>
       </ContentBody>
       <Footer style={{elevation: 5}}>
         <SaveButton>

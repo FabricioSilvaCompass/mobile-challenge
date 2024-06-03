@@ -8,6 +8,7 @@ import {
   Container,
   ContentBody,
   Description,
+  ErrorMessage,
   Form,
   Header,
   Logo,
@@ -20,11 +21,13 @@ import AuthContext from '../../contexts/auth';
 import {useForm, Controller} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {StackTypes} from '../../routes/auth.routes';
+import axios from 'axios';
+import {Alert} from 'react-native';
 
 const Login: React.FC = () => {
   const navigation = useNavigation<StackTypes>();
 
-  const {signed, login} = useContext(AuthContext);
+  const {login} = useContext(AuthContext);
 
   const {
     control,
@@ -32,9 +35,18 @@ const Login: React.FC = () => {
     formState: {errors},
   } = useForm({});
 
-  function handleLogin(data: any) {
-    console.log(data);
-    login();
+  async function handleLogin(data: any) {
+    try {
+      const response = await login(data);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 401) {
+          Alert.alert('', 'Incorrect username or password');
+        } else {
+          Alert.alert('error', error.response?.data);
+        }
+      }
+    }
   }
 
   return (
@@ -49,13 +61,6 @@ const Login: React.FC = () => {
       </Header>
       <ContentBody
         style={{
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 0,
-            height: 10,
-          },
-          shadowOpacity: 0.51,
-          shadowRadius: 13.16,
           elevation: 20,
         }}>
         <BodyTitle>Access your account</BodyTitle>
@@ -66,27 +71,50 @@ const Login: React.FC = () => {
         <Form>
           <Controller
             control={control}
-            name="E-mail"
+            name="userid"
+            rules={{
+              required: 'User ID obrigatório',
+              pattern: {
+                message: 'User ID inválido',
+                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
+              },
+            }}
             render={({field: {onChange, value}}) => (
               <Input
-                lable="E-mail"
+                lable="UserID"
+                isPassword={false}
+                style={{borderColor: errors.userid ? 'red' : 'black'}}
                 onChangeText={onChange}
                 value={value}
-                placeholder="E-mail"></Input>
+                placeholder="UserID"></Input>
             )}
           />
+          {errors.userid && (
+            <ErrorMessage style={{color: errors.userid ? 'red' : 'black'}}>
+              {errors.userid?.message?.toString()}
+            </ErrorMessage>
+          )}
           <Controller
             control={control}
-            name="Password"
+            name="password"
+            rules={{
+              required: 'password obrigatório',
+            }}
             render={({field: {onChange, value}}) => (
               <Input
                 lable="Password"
+                isPassword={true}
+                style={{borderColor: errors.password ? 'red' : 'black'}}
                 onChangeText={onChange}
                 value={value}
-                secureTextEntry
                 placeholder="Password"></Input>
             )}
           />
+          {errors.password && (
+            <ErrorMessage style={{color: errors.password ? 'red' : 'black'}}>
+              {errors.password?.message?.toString()}
+            </ErrorMessage>
+          )}
         </Form>
         <ButtonLogin onPress={handleSubmit(handleLogin)}>
           <TextLogin>Log in</TextLogin>

@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  justify-content: space-between;
+export const Container = styled.ScrollView`
   background-color: white;
   flex: 1;
 `;
@@ -92,4 +91,9 @@ export const Description = styled.Text`
   text-align: center;
   margin: 10px;
   color: black;
+`;
+
+export const ErrorMessage = styled.Text`
+  font-size: 14px;
+  margin-left: 10px;
 `;

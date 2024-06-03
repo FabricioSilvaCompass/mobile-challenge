@@ -4,18 +4,23 @@ import {NativeStackNavigationProp} from 'react-native-screens/lib/typescript/nat
 import Statement from '../screens/Statement/Statement';
 import PaySlip from '../screens/PaySlip/PaySlip';
 
-const StatementStack = createStackNavigator();
-
-type StackNavigation = {
-  PaySlip: undefined;
+export type RootStackParamsList = {
+  StatementList: undefined;
+  PaySlip: {
+    itemId: string;
+  };
 };
+const StatementStack = createStackNavigator<RootStackParamsList>();
 
-export type StackTypes = NativeStackNavigationProp<StackNavigation>;
+export type PaySlipScreenProps = NativeStackNavigationProp<
+  RootStackParamsList,
+  'PaySlip'
+>;
 
 const StatementRoutes: React.FC = () => (
   <StatementStack.Navigator>
     <StatementStack.Screen
-      name="Statement List"
+      name="StatementList"
       component={Statement}
       options={{headerShown: false}}
     />
